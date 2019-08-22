@@ -83,12 +83,13 @@ class Field
 {
     // Private Member Functions
 
-        void doMap
+        //- Return reference to copy of this field if mapF is the same field
+        //  otherwise return mapF
+        const UList<Type>& copySelf
         (
             const UList<Type>& mapF,
-            const labelListList& mapAddressing,
-            const scalarListList& mapWeights
-        );
+            tmp<Field<Type>>& tmapFcpy
+        ) const;
 
 
 public:
@@ -145,7 +146,7 @@ public:
         //- Copy constructor or re-use as specified.
         Field(Field<Type>&, bool reuse);
 
-        //- Move Constructor transferring the Field contents
+        //- Move constructor transferring the Field contents
         Field(Field<Type>&&);
 
         //- Copy constructor of tmp<Field>
