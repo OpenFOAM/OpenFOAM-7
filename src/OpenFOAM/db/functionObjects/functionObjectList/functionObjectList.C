@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -285,7 +285,7 @@ bool Foam::functionObjectList::readFunctionObject
     autoPtr<ISstream> fileStreamPtr(fileHandler().NewIFstream(path));
     ISstream& fileStream = fileStreamPtr();
 
-    dictionary funcsDict(fileStream);
+    dictionary funcsDict(funcName, functionsDict, fileStream);
     dictionary* funcDictPtr = &funcsDict;
 
     if (funcsDict.found(funcName) && funcsDict.isDict(funcName))
